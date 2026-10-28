@@ -1,0 +1,16 @@
+{
+  "template": "Rethunk-Tech/mortar-bepinex5-template",
+  "ref": "main",
+  "name": "Boombox",
+  "values": {
+    "audience": "everyone",
+    "categories": "mods|bepinex",
+    "description": "Plays songs from boombox song packs, and your own, without copying or deleting anything.",
+    "idPrefix": "tech.rethunk.mortar",
+    "modAuthor": "Rethunk Tech",
+    "repositoryUrl": "https://github.com/Rethunk-Tech/mortar-lc-boombox",
+    "team": "Mortar"
+  },
+  "game": "lethal-company",
+  "templateIcon": "6bca30eda2c43afa30b8190d161b33a3c7e79a2f09ecc957f6255221b3b332dd"
+}

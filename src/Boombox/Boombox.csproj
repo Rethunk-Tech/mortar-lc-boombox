@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>tech.rethunk.mortar.Boombox</AssemblyName>
+    <AssemblyTitle>Boombox</AssemblyTitle>
+    <RootNamespace>Boombox</RootNamespace>
+    <RepositoryUrl>https://github.com/Rethunk-Tech/mortar-lc-boombox</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsThunderstorePackable>true</IsThunderstorePackable>
+    <ThunderstoreName>Boombox</ThunderstoreName>
+    <ThunderstoreDescription>Plays songs from boombox song packs, and your own, without copying or deleting anything.</ThunderstoreDescription>
+    <ThunderstoreCommunities>lethal-company</ThunderstoreCommunities>
+    <ThunderstoreCategories>mods;bepinex</ThunderstoreCategories>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ModFile Include="$(TargetPath)" Destination="plugins/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ThunderstorePackageFile Include="$(SolutionRoot)README.md" />
+    <ThunderstorePackageFile Include="$(SolutionRoot)CHANGELOG.md" />
+    <ThunderstorePackageFile Include="$(SolutionRoot)icon.png" />
+    <ThunderstorePackageFile Include="$(SolutionRoot)LICENSE" />
+    <ThunderstoreDependency Include="BepInEx-BepInExPack" Version="5.4.2305" />
+  </ItemGroup>
+</Project>
