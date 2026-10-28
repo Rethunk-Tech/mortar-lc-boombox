@@ -68,6 +68,7 @@ public class Plugin : BaseUnityPlugin
         DontDestroyOnLoad(holder);
         holder.hideFlags = HideFlags.HideAndDontSave;
         runner = holder.AddComponent<Loader>();
+        Watch.Start(holder, Reload, Paths.PluginPath, Path.Combine(Paths.BepInExRootPath, "Custom Songs"));
     }
 
     // Each pack's mortar/boombox folder. Still read: each pack's Custom Songs folder, as Custom Boombox Fix packs ship
@@ -85,6 +86,41 @@ public class Plugin : BaseUnityPlugin
             .Distinct()
             .OrderBy(f => Path.GetFileName(f), StringComparer.Ordinal)
             .ToArray();
+    }
+
+    // New and changed songs join the list; a boombox that's playing keeps its song, found again by name.
+    private static void Reload(IReadOnlyCollection<string> changed)
+    {
+        if (!changed.Any(f => Type(f) != AudioType.UNKNOWN || Path.GetExtension(f) == ""))
+        {
+            return;
+        }
+        var playing = new List<(BoomboxItem Boombox, Track Track, string Key)>();
+        foreach (BoomboxItem boombox in FindObjectsOfType<BoomboxItem>())
+        {
+            if (tracks.TryGetValue(boombox, out Track track) && track.Index >= 0 && track.Index < Count(boombox))
+            {
+                playing.Add((boombox, track, KeyOf(boombox, track.Index)));
+            }
+        }
+        files = Files();
+        foreach (BoomboxItem boombox in FindObjectsOfType<BoomboxItem>())
+        {
+            if (loaded.TryGetValue(boombox, out Dictionary<string, AudioClip> clips))
+            {
+                foreach (string file in changed)
+                {
+                    clips.Remove(file);
+                }
+            }
+        }
+        foreach ((BoomboxItem boombox, Track track, string key) in playing)
+        {
+            track.Index = IndexOf(boombox, key);
+            track.History.Clear();
+            track.Order.Clear();
+        }
+        Log.LogInfo($"Found {files.Length} songs");
     }
 
     private static AudioType Type(string file) => Path.GetExtension(file).ToLowerInvariant() switch
