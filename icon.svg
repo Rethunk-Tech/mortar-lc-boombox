@@ -1,12 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
-  <rect width="256" height="256" rx="40" fill="#24262C"/>
-  <g fill="#7C818C">
-    <rect x="70" y="86" width="104" height="104" rx="10"/>
-    <circle cx="122" cy="80" r="22"/>
-    <circle cx="180" cy="138" r="22"/>
-  </g>
-  <g fill="#24262C">
-    <circle cx="70" cy="138" r="20"/>
-    <circle cx="122" cy="190" r="20"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256"><defs><pattern id="bricks" width="56" height="60" patternUnits="userSpaceOnUse"><rect x="4" y="4" width="48" height="22" rx="4" fill="#1F1F26"/><rect x="-24" y="34" width="48" height="22" rx="4" fill="#1F1F26"/><rect x="32" y="34" width="48" height="22" rx="4" fill="#1F1F26"/></pattern>
+<filter id="drop" x="-25%" y="-25%" width="150%" height="160%">
+<feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dy="6" result="b"/><feFlood flood-color="#000" flood-opacity="0.7"/><feComposite in2="b" operator="in"/>
+<feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="pocket" x="-20%" y="-20%" width="140%" height="140%"><feOffset in="SourceAlpha" dy="4"/><feGaussianBlur stdDeviation="2.8" result="o"/><feComposite in="SourceAlpha" in2="o" operator="out" result="edge"/><feFlood flood-color="#000" flood-opacity="0.9"/><feComposite in2="edge" operator="in" result="sh"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="sh"/></feMerge></filter></defs><rect width="256" height="256" fill="#19191E"/><rect width="256" height="256" fill="url(#bricks)"/><g transform="translate(30.0 30.0) scale(8.166666666666666)"><g filter="url(#drop)"><path d="M7 7.5 V5 a1.5 1.5 0 0 1 1.5 -1.5 h7 a1.5 1.5 0 0 1 1.5 1.5 V7.5" fill="none" stroke="#D6B17A" stroke-width="1.6" stroke-linecap="round"/><rect x="1" y="7" width="22" height="13" rx="2.4" fill="#D6B17A"/></g></g><g filter="url(#pocket)"><circle cx="82.27" cy="141.07" r="31.85" fill="#19191E"/><circle cx="82.27" cy="141.07" r="31.85" fill="url(#bricks)"/><circle cx="173.73" cy="141.07" r="31.85" fill="#19191E"/><circle cx="173.73" cy="141.07" r="31.85" fill="url(#bricks)"/></g><g transform="translate(30.0 30.0) scale(8.166666666666666)"><circle cx="6.4" cy="13.6" r="1.4" fill="#F2F0EA"/><circle cx="17.6" cy="13.6" r="1.4" fill="#F2F0EA"/><rect x="10.3" y="9" width="3.4" height="1.2" rx="0.6" fill="#19191E"/></g></svg>
