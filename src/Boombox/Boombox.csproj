@@ -10,9 +10,9 @@
   <PropertyGroup>
     <IsThunderstorePackable>true</IsThunderstorePackable>
     <ThunderstoreName>Boombox</ThunderstoreName>
-    <ThunderstoreDescription>Plays songs from boombox song packs, and your own, without copying or deleting anything.</ThunderstoreDescription>
+    <ThunderstoreDescription>Plays songs from boombox song packs, and your own, on the boombox. Packs made for Custom Boombox Fix work with it.</ThunderstoreDescription>
     <ThunderstoreCommunities>lethal-company</ThunderstoreCommunities>
-    <ThunderstoreCategories>mods;bepinex</ThunderstoreCategories>
+    <ThunderstoreCategories>libraries;boombox;audio;clientside;bepinex</ThunderstoreCategories>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,5 +25,7 @@
     <ThunderstorePackageFile Include="$(SolutionRoot)icon.png" />
     <ThunderstorePackageFile Include="$(SolutionRoot)LICENSE" />
     <ThunderstoreDependency Include="BepInEx-BepInExPack" Version="5.4.2305" />
+    <ThunderstoreDependency Include="Mortar-ConfigSync" Version="0.1.0" />
+    <Reference Include="$(MortarDependency_Mortar_ConfigSync)**/*.dll" Condition="'$(MortarDependency_Mortar_ConfigSync)' != ''" Private="false" />
   </ItemGroup>
 </Project>
