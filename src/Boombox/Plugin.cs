@@ -249,7 +249,7 @@ public class Plugin : BaseUnityPlugin
         if (!clips.TryGetValue(file, out AudioClip clip))
         {
             clip = DownloadHandlerAudioClip.GetContent(request);
-            clip.name = Path.GetFileNameWithoutExtension(file);
+            clip.name = Tags.Title(file) ?? Path.GetFileNameWithoutExtension(file);
             clips[file] = clip;
         }
         // Skip it if the boombox has moved on to another song.
