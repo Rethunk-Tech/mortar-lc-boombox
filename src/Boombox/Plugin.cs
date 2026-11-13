@@ -400,7 +400,8 @@ public class Plugin : BaseUnityPlugin
         {
             return;
         }
-        using var message = new FastBufferWriter(64, Allocator.Temp, 4096);
+        // Fragmented, since a few playing boomboxes with long song names pass the 1300-byte unfragmented limit.
+        using var message = new FastBufferWriter(64, Allocator.Temp, 1 << 16);
         message.WriteValueSafe(playing.Length);
         foreach (BoomboxItem boombox in playing)
         {
@@ -412,7 +413,7 @@ public class Plugin : BaseUnityPlugin
         {
             if (client != NetworkManager.ServerClientId)
             {
-                network.CustomMessagingManager.SendNamedMessage(Message, client, message);
+                network.CustomMessagingManager.SendNamedMessage(Message, client, message, NetworkDelivery.ReliableFragmentedSequenced);
             }
         }
     }
