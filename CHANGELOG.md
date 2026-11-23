@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- A ship with several playing boomboxes and long song names still syncs to everyone; the state is sent in fragments now.
+- Dependabot's NuGet update checks no longer fail trying to reach Thunderstore.
+
 ## 0.1.0
 
 - First release. Songs from every pack's `mortar/boombox` folder (`Custom Songs` still read) and from `BepInEx/Custom Songs/Boombox Music`, played in
